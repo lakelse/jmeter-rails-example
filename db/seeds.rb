@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+User.create!({email: "admin@example.com", password: "password1", password_confirmation: "password1" })
+
+(1..10).each do |i|
+  content = (("This is some text " * rand(2...7)).chop + ".  " ) * rand(5..10)
+  Post.create(name: 'admin', title: "Title #{i}", content: content)
+end
