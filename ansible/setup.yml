@@ -1,0 +1,36 @@
+---
+
+- name: Setup
+  hosts: dev
+  become: yes
+  
+  vars:
+    swap_file_size_mb: 1024
+    docker_edition: 'ce'
+    docker_users:
+      - vagrant
+
+  roles:
+    - geerlingguy.docker
+    - geerlingguy.swap
+
+  tasks:
+
+    - name: Install JRE
+      ansible.builtin.apt:
+        pkg:
+          - default-jre
+
+    - name: Download JMeter zip
+      become: no
+      ansible.builtin.unarchive:
+        src: https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.tgz
+        dest: ~/
+        remote_src: true
+
+    - name: Add jmeter bin to path
+      become: no
+      ansible.builtin.lineinfile:
+        path: ~/.profile
+        line: PATH=~/apache-jmeter-5.5/bin:$PATH
+

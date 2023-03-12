@@ -1,0 +1,8 @@
+---
+
+- name: geerlingguy.docker
+  src: https://github.com/geerlingguy/ansible-role-docker
+
+- name: geerlingguy.swap
+  src: https://github.com/geerlingguy/ansible-role-swap
+
