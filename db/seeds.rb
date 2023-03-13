@@ -8,7 +8,7 @@
 
 User.create!({email: "admin@example.com", password: "password1", password_confirmation: "password1" })
 
-(1..10).each do |i|
+(1..100).each do |i|
   content = (("This is some text " * rand(2...7)).chop + ".  " ) * rand(5..10)
   Post.create(name: 'admin', title: "Title #{i}", content: content)
 end
