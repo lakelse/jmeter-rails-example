@@ -16,10 +16,12 @@
 
   tasks:
 
-    - name: Install JRE
+    - name: Install some system prerequisites
       ansible.builtin.apt:
         pkg:
           - default-jre
+          - x11-apps
+          - xauth
 
     - name: Download JMeter zip
       become: no
