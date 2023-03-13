@@ -22,3 +22,25 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+```bash
+# bring up VM
+vagrant up
+
+# login to VM
+vagrant ssh
+
+# change directory to shared drive
+cd /vagrant
+
+# remove any pids from previous launches
+rm tmp/pids/server.pid
+
+# recreate the database
+docker-compose run web rails db:reset
+
+# start the container and tail the log
+docker-compose up -d && docker-compose logs -f
+```
+
